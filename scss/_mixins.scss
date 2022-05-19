@@ -1,0 +1,30 @@
+//breakpoints
+
+@media(min-width:64em){ //1024px / 16 =>64em
+
+}
+
+//sass map=>Maps in Sass hold pairs of keys and values, and make it easy to look up a value by its corresponding key.
+// breakpoints-up => greater than that value
+// medium=640px
+// large=1024px
+// xlarge=1400px
+$breakpoints-up:("medium":"45em","large":"64em","xlarge":"87.5em");
+
+// breakpoints-down=> less than that value
+// small=639px
+// medium=1023px
+// large=1399px
+$breakpoints-down:("small":"44.9375em","medium":"63.94em","large":"87.4375em");
+
+@mixin breakpoint-up($size){
+    @media(min-width: map-get($breakpoints-up,$size)){
+        @content;
+    }  
+}
+
+@mixin breakpoint-down($size){
+    @media(max-width: map-get($breakpoints-down,$size)){
+        @content;
+    }  
+}
